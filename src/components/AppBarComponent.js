@@ -49,10 +49,13 @@ const styleSheet = createStyleSheet('AppBarComponent', () => ({
 export default class AppBarComponent extends Component {
   state = {
     open: false,
+    user: 'Johannes'
   };
 
   handleOpen = () => this.setState({ open: true });
   handleClose = () => this.setState({ open: false });
+
+  handleClick = (e) => {console.log(e);}
 
   render() {
 
@@ -66,7 +69,7 @@ export default class AppBarComponent extends Component {
               <MenuIcon />
             </IconButton>
             <Text type="title" colorInherit className={classes.flex}>{this.props.title}</Text>
-            <Button contrast>Login</Button>
+            <Button contrast>{this.state.user}</Button>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -74,8 +77,8 @@ export default class AppBarComponent extends Component {
           onRequestClose={this.handleClose}
           onClick={this.handleClose}
         >
-          <List className={classes.list} padding={false}>
-            <ListItem button>
+          <List className={classes.list}>
+            <ListItem button onClick={() => this.handleClick('Inbox')}>
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
@@ -101,7 +104,7 @@ export default class AppBarComponent extends Component {
             </ListItem>
           </List>
           <Divider />
-          <List className={classes.list} padding={false}>
+          <List className={classes.list}>
             <ListItem button>
               <ListItemIcon>
                 <MailIcon />
