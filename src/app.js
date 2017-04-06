@@ -1,15 +1,30 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-import MenuBar from './components/menu_bar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import createPalette from 'material-ui/styles/palette';
+import createMuiTheme from 'material-ui/styles/theme';
+import { blue, pink } from 'material-ui/styles/colors';
 
-const App = () => {
-    return (
-        <div>
-            <MenuBar />
-            <div>Hi!</div>
-        </div>
-    );
-}
+import MyAwesomeReactComponent from './components/MyAwesomeReactComponent';
+import AppBarComponent from './components/AppBarComponent';
 
-ReactDOM.render(App(), document.querySelector('.container'));
+const palette = createPalette({
+  primary: blue,
+  accent: pink,
+  type: 'light',
+});
+
+const { styleManager, theme } = MuiThemeProvider.createDefaultContext({
+  theme: createMuiTheme({ palette }),
+});
+
+const App = () => (
+  <MuiThemeProvider theme={theme} styleManager={styleManager}>
+    <div>
+      <AppBarComponent title='Dockmin Alpha' />
+      <MyAwesomeReactComponent />
+    </div>
+  </MuiThemeProvider>
+);
+
+export default App;
