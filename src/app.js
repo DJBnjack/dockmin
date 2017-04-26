@@ -21,7 +21,7 @@ const { styleManager, theme } = MuiThemeProvider.createDefaultContext({
 const App = () => (
   <MuiThemeProvider theme={theme} styleManager={styleManager}>
     <div>
-      <AppBarComponent title='Dockmin Alpha' />
+      <AppBarComponent title='Dockmin' />
       <MyAwesomeReactComponent />
     </div>
   </MuiThemeProvider>
